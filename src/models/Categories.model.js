@@ -3,7 +3,7 @@ import mongoose, { Schema } from "mongoose";
 const CategoriesSchema = new Schema(
   {
     name: { type: String, required: true },
-    companyId: {
+    CompanyId: {
       type: mongoose.Schema.Types.ObjectId,
       required: true,
       ref: "Company",

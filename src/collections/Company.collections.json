@@ -29,7 +29,7 @@
           },
           "body": {
             "mode": "raw",
-            "raw": "{\n    \"name\": \"Company Name\",\n    \"adminId\": \"AdminUserID\",\n    \"type\": \"Company Type\",\n    \"country\": \"Country\",\n    \"city\": \"City\",\n    \"state\": \"State\",\n    \"zip\": \"ZIP Code\",\n    \"email\": \"contact@example.com\",\n    \"contactPerson\": \"Contact Person\",\n    \"phone\": \"123-456-7890\",\n    \"fax\": \"098-765-4321\",\n    \"companyNo\": \"Company Number\",\n    \"logo\": \"Logo URL\",\n    \"signature\": \"Signature URL\"\n}"
+            "raw": "{\n    \"name\": \"Company Name\",\n    \"type\": \"Company Type\",\n    \"country\": \"Country\",\n    \"city\": \"City\",\n    \"state\": \"State\",\n    \"zip\": \"ZIP Code\",\n    \"email\": \"contact@example.com\",\n    \"contactPerson\": \"Contact Person\",\n    \"phone\": \"123-456-7890\",\n    \"fax\": \"098-765-4321\",\n    \"companyNo\": \"Company Number\",\n    \"logo\": \"Logo URL\",\n    \"signature\": \"Signature URL\"\n}"
           }
         },
         "response": []

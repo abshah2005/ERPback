@@ -12,13 +12,11 @@ export const createInvoice = asynchandler(async (req, res) => {
         throw new Apierror(400, "All fields are required.");  
     }  
     
-    // Check if vendor exists  
     const vendorExists = await Vendor.findById(vendor_id);  
     if (!vendorExists) {  
         throw new Apierror(404, "Vendor not found.");  
     }  
 
-    // Check if account exists  
     const accountExists = await Account.findById(account_id);  
     if (!accountExists) {  
         throw new Apierror(404, "Account not found.");  
@@ -92,15 +90,11 @@ export const rejectInvoice = asynchandler(async (req, res) => {
 });  
 
 export const getAllInvoicesWithNetAmount = asynchandler(async (req, res) => {  
-    // Fetch all invoices and populate vendor and account details  
     const invoices = await Invoice.find().populate('vendor_id account_id');  
 
-    // Map through each invoice to include associated items  
     const invoicesWithDetails = await Promise.all(invoices.map(async (invoice) => {  
-        // Fetch associated invoice items  
         const invoiceItems = await InvoiceItems.find({ invoice_id: invoice._id }).populate('product_id');  
 
-        // Return a new invoice object with required details  
         return {  
             ...invoice.toObject(),  
             items: invoiceItems,  
@@ -109,15 +103,13 @@ export const getAllInvoicesWithNetAmount = asynchandler(async (req, res) => {
                 const itemTotal = (item.price - discountAmount) * item.qty;  
                 return total + itemTotal;  
             }, 0) : 0,  
-            netAmount: invoice.net_amount // Directly use net_amount from the invoice  
+            netAmount: invoice.net_amount
         };  
     }));  
 
-    // Return the aggregated invoices with items and totals  
     return res.status(200).json(invoicesWithDetails);  
 });  
 
-// Get the total amount for a specific invoice  
 export const getInvoiceTotalById = asynchandler(async (req, res) => {  
     const { id } = req.params;  
 
@@ -138,13 +130,11 @@ export const getInvoiceWithItemsById = asynchandler(async (req, res) => {
         throw new Apierror(404, "Invoice not found.");  
     }  
 
-    // Check if vendor exists  
     const vendorExists = await Vendor.findById(invoice.vendor_id);  
     if (!vendorExists) {  
         throw new Apierror(404, "Associated vendor not found.");  
     }  
 
-    // Check if account exists  
     const accountExists = await Account.findById(invoice.account_id);  
     if (!accountExists) {  
         throw new Apierror(404, "Associated account not found.");  
@@ -160,6 +150,6 @@ export const getInvoiceWithItemsById = asynchandler(async (req, res) => {
             const itemTotal = (item.price - discountAmount) * item.qty;  
             return total + itemTotal;  
         }, 0) : 0,  
-        netAmount: invoice.net_amount // Return net_amount directly from the invoice  
+        netAmount: invoice.net_amount 
     });  
 });

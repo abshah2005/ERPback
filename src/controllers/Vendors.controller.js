@@ -43,7 +43,7 @@ export const createVendor = asynchandler(async (req, res) => {
 export const getVendorsByCompany = asynchandler(async (req, res) => {
   const { companyId } = req.params;
 
-  const companyExists = await Companies.findById(companyId);
+  const companyExists = await Company.findById(companyId);
   if (!companyExists) {
     throw new Apierror(404, "Company not found.");
   }

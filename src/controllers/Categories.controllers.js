@@ -1,26 +1,33 @@
 import { Categories } from "../models/Categories.model.js";
 import { Apierror } from "../utils/Apierror.js";
 import { asynchandler } from "../utils/Asynchandler.js";
+import {Company} from "../models/Company.model.js"
 
 
-export const createCategory = asynchandler(async (req, res) => {
-  const { name, CompanyId, description, type } = req.body;
+export const createCategory = asynchandler(async (req, res) => {  
+  const { name, CompanyId, description, type } = req.body;  
 
-  if (!name || !CompanyId || !description || !type) {
-    throw new Apierror(400, "All fields are required.");
-  }
-  const categoryExists = await Categories.find({name:name});
-  if (!categoryExists) {
-    throw new Apierror(404, "Category already exists.");
-  }
+  if (!name || !CompanyId || !description || !type) {  
+    throw new Apierror(400, "All fields are required.");  
+  }  
+  
+  const company = await Company.findById(CompanyId);  
+  if (!company) {  
+    throw new Apierror(404, "Company doesn't exist.");  
+  }   
 
-  const newCategory = await Categories.create({ name, CompanyId, description, type });
-  return res.status(201).json({ message: "Category created successfully", category: newCategory });
-});
+  const categoryExists = await Categories.findOne({ name: name }); 
+  if (categoryExists) { 
+    throw new Apierror(409, "Category already exists."); 
+  }  
+
+  const newCategory = await Categories.create({ name, CompanyId, description, type });  
+  return res.status(201).json({ message: "Category created successfully", category: newCategory });  
+});  
 
 export const getCategoriesByCompany = asynchandler(async (req, res) => {
   const { companyId } = req.params;
-  const companyExists = await Companies.findById(companyId);
+  const companyExists = await Company.findById(companyId);
   if (!companyExists) {
     throw new Apierror(404, "Company not found.");
   }

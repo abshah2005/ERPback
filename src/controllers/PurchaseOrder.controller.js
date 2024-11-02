@@ -68,7 +68,6 @@ export const updatePurchaseOrder = asynchandler(async (req, res) => {
 
   const updateFields = {};  
 
-  // Validate and assign fields  
   if (req.body.number) updateFields.number = req.body.number;  
   if (req.body.date) updateFields.date = req.body.date;  
   if (req.body.receipt_date) updateFields.receipt_date = req.body.receipt_date;  

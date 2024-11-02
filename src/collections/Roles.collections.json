@@ -17,7 +17,7 @@
             "raw": "{\n  \"name\": \"Sales\"\n}"
           },
           "url": {
-            "raw": "http://localhost:7000/api/createrole",
+            "raw": "http://localhost:7000/api/role/createrole",
             "host": ["localhost:7000"],
             "path": ["api", "createrole"]
           }
@@ -31,7 +31,7 @@
             { "key": "Authorization", "value": "Bearer {{token}}" }
           ],
           "url": {
-            "raw": "http://localhost:7000/api/getRoles",
+            "raw": "http://localhost:7000/api/role/getRoles",
             "host": ["localhost:7000"],
             "path": ["api", "getRoles"]
           }
@@ -45,7 +45,7 @@
             { "key": "Authorization", "value": "Bearer {{token}}" }
           ],
           "url": {
-            "raw": "http://localhost:7000/api/getRole/:id",
+            "raw": "http://localhost:7000/api/role/getRole/:id",
             "host": ["localhost:7000"],
             "path": ["api", "getRole", ":id"],
             "variable": [
@@ -67,7 +67,7 @@
             "raw": "{\n  \"name\": \"Inventory\"\n}"
           },
           "url": {
-            "raw": "http://localhost:7000/api/updateRole/:id",
+            "raw": "http://localhost:7000/api/role/updateRole/:id",
             "host": ["localhost:7000"],
             "path": ["api", "updateRole", ":id"],
             "variable": [
@@ -84,7 +84,7 @@
             { "key": "Authorization", "value": "Bearer {{token}}" }
           ],
           "url": {
-            "raw": "http://localhost:7000/api/deleteRole/:id",
+            "raw": "http://localhost:7000/api/role/deleteRole/:id",
             "host": ["localhost:7000"],
             "path": ["api", "deleteRole", ":id"],
             "variable": [

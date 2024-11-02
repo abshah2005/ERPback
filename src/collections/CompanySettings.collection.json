@@ -1,0 +1,79 @@
+{  
+    "info": {  
+      "name": "Company Settings API",  
+      "description": "API for managing company settings.",  
+      "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"  
+    },  
+    "item": [  
+      {  
+        "name": "Get Company Settings",  
+        "request": {  
+          "method": "GET",  
+          "header": [  
+            {  
+              "key": "Authorization",  
+              "value": "Bearer {{your_token}}",  
+              "description": "Admin JWT token"  
+            }  
+          ],  
+          "url": {  
+            "raw": "http://localhost:7000/api/companySettings/getCompanySettings/:companyId",  
+            "host": ["localhost"],  
+            "port": "7000",  
+            "path": [  
+              "api",  
+              "companySettings",  
+              "getCompanySettings",  
+              ":companyId"  
+            ],  
+            "variable": [  
+              {  
+                "key": "companyId",  
+                "value": "12345"  
+              }  
+            ]  
+          }  
+        },  
+        "response": []  
+      },  
+      {  
+        "name": "Update Company Settings",  
+        "request": {  
+          "method": "PUT",  
+          "header": [  
+            {  
+              "key": "Authorization",  
+              "value": "Bearer {{your_token}}",  
+              "description": "Admin JWT token"  
+            },  
+            {  
+              "key": "Content-Type",  
+              "value": "application/json"  
+            }  
+          ],  
+          "url": {  
+            "raw": "http://localhost:7000/api/companySettings/updateCompanySettings/:companyId",  
+            "host": ["localhost"],  
+            "port": "7000",  
+            "path": [  
+              "api",  
+              "companySettings",  
+              "updateCompanySettings",  
+              ":companyId"  
+            ],  
+            "variable": [  
+              {  
+                "key": "companyId",  
+                "value": "12345"  
+              }  
+            ]  
+          },  
+          "body": {  
+            "mode": "raw",  
+            "raw": "{\n    \"settingKey1\": \"settingValue1\",\n    \"settingKey2\": \"settingValue2\"\n}"  
+          }  
+        },  
+        "response": []  
+      }  
+    ]  
+  }

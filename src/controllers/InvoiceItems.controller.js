@@ -68,7 +68,6 @@ export const getAllInvoiceItems = asynchandler(async (req, res) => {
     return res.status(200).json(invoiceItems);  
 });  
 
-// Get an Invoice Item by ID  
 export const getInvoiceItemById = asynchandler(async (req, res) => {  
     const { id } = req.params;  
     const invoiceItem = await InvoiceItems.findById(id).populate('product_id invoice_id');  
@@ -80,11 +79,9 @@ export const getInvoiceItemById = asynchandler(async (req, res) => {
     return res.status(200).json(invoiceItem);  
 });  
 
-// Update an Invoice Item with enhanced validation  
 export const updateInvoiceItem = asynchandler(async (req, res) => {  
     const { id } = req.params;  
 
-    // Validate incoming data, except for fields not included in the update   
     validateInvoiceItemData(req.body);  
 
     const updatedInvoiceItem = await InvoiceItems.findByIdAndUpdate(id, req.body, { new: true, runValidators: true });  
@@ -93,13 +90,11 @@ export const updateInvoiceItem = asynchandler(async (req, res) => {
         throw new Apierror(404, "Invoice item not found.");  
     }  
 
-    // Update the related invoice total  
     await updateInvoiceTotal(updatedInvoiceItem.invoice_id);  
 
     return res.status(200).json({ message: "Invoice item updated successfully", invoiceItem: updatedInvoiceItem });  
 });  
 
-// Delete an Invoice Item  
 export const deleteInvoiceItem = asynchandler(async (req, res) => {  
     const { id } = req.params;  
     const invoiceItem = await InvoiceItems.findById(id);  

@@ -55,7 +55,6 @@ export const updatePurchaseItem = asynchandler(async (req, res) => {
 
   const updateFields = {};  
 
-  // Validate and assign fields  
   if (req.body.product_id) updateFields.product_id = req.body.product_id;  
   if (req.body.purchase_order_id) updateFields.purchase_order_id = req.body.purchase_order_id;  
   if (req.body.qty) updateFields.qty = req.body.qty;  
@@ -63,7 +62,6 @@ export const updatePurchaseItem = asynchandler(async (req, res) => {
   if (req.body.discount != null) updateFields.discount = req.body.discount;  
   if (req.body.comments) updateFields.comments = req.body.comments;  
 
-  // Update the total price based on the new qty, price, and discount  
   if (req.body.qty || req.body.price || req.body.discount != null) {  
     const qty = req.body.qty || existingItem.qty;  
     const price = req.body.price || existingItem.price;  
