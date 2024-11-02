@@ -1,0 +1,33 @@
+<h1>{{title}}</h1>
+<table>
+  <thead>
+    <tr>
+      <th>Number</th>
+      <th>Date</th>
+      <th>Customer</th>
+      <th>Net Amount</th>
+      <th>Discount (%)</th>
+      <th>Net Amount After Discount</th>
+    </tr>
+  </thead>
+  <tbody>
+    {{#each items}}
+    <tr>
+      <td>{{this.number}}</td>
+      <td>{{this.date}}</td>
+      <td>{{this.customer}}</td>
+      <td>{{this.netAmount}}</td>
+      <td>{{#if this.discount}}{{this.discount}}{{else}}N/A{{/if}}</td>
+      <td>{{#if this.discount}}{{this.netAmount - (this.discount / 100 * this.netAmount) | currency}}{{else}}{{this.netAmount | currency}}{{/if}}</td>
+    </tr>
+    {{/each}}
+  </tbody>
+  <tfoot>
+    <tr>
+      <td colspan="3">Total:</td>
+      <td>{{totalAmount}}</td>
+      <td>{{totalDiscount}}</td>
+      <td>{{netAmount}}</td>
+    </tr>
+  </tfoot>
+</table>

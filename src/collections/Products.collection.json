@@ -1,0 +1,98 @@
+{
+	"info": {
+		"name": "Product Management API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Create Product",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:7000/api/products/createProduct",
+					"protocol": "http",
+					"host": ["localhost"],
+					"port": "7000",
+					"path": ["api", "products", "createProduct"]
+				},
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"Product Name\",\n    \"unit_id\": \"unit_id_here\",\n    \"CompanyId\": \"company_id_here\",\n    \"purchase_price\": 100,\n    \"sale_price\": 150\n}"
+				}
+			}
+		},
+		{
+			"name": "Get All Products",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:7000/api/products/getAllproducts/companyId_here",
+					"protocol": "http",
+					"host": ["localhost"],
+					"port": "7000",
+					"path": ["api", "products", "getAllproducts", "companyId_here"]
+				}
+			}
+		},
+		{
+			"name": "Get Product By ID",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:7000/api/products/getProduct/product_id_here",
+					"protocol": "http",
+					"host": ["localhost"],
+					"port": "7000",
+					"path": ["api", "products", "getProduct", "product_id_here"]
+				}
+			}
+		},
+		{
+			"name": "Update Product",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:7000/api/products/updateProduct/product_id_here",
+					"protocol": "http",
+					"host": ["localhost"],
+					"port": "7000",
+					"path": ["api", "products", "updateProduct", "product_id_here"]
+				},
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"Updated Product Name\",\n    \"unit_id\": \"updated_unit_id_here\",\n    \"CompanyId\": \"updated_company_id_here\",\n    \"purchase_price\": 120,\n    \"sale_price\": 170\n}"
+				}
+			}
+		},
+		{
+			"name": "Delete Product",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:7000/api/products/deleteProduct/product_id_here",
+					"protocol": "http",
+					"host": ["localhost"],
+					"port": "7000",
+					"path": ["api", "products", "deleteProduct", "product_id_here"]
+				}
+			}
+		}
+	]
+}

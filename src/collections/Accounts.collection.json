@@ -1,0 +1,104 @@
+{
+	"info": {
+		"name": "Account Management API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Create Account",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:7000/api/accounts",
+					"protocol": "http",
+					"host": ["localhost"],
+					"port": "7000",
+					"path": ["api", "accounts"]
+				},
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"Main Business Account\",\n    \"description\": \"Primary account for business transactions\",\n    \"code\": \"MB001\",\n    \"account_type_id\": \"64c9a555b9f8c2451dc3e6bb\",\n    \"bankName\": \"Bank of America\",\n    \"branch\": \"San Francisco\",\n    \"accountTitle\": \"Business Operations\",\n    \"accountNo\": \"123456789\",\n    \"CompanyId\": \"64c9b111c8f8a1594df3e6ff\"\n}"
+				}
+			}
+		},
+		{
+			"name": "Get All Accounts",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:7000/api/accounts?companyId=64c9b111c8f8a1594df3e6ff",
+					"protocol": "http",
+					"host": ["localhost"],
+					"port": "7000",
+					"path": ["api", "accounts"],
+					"query": [
+						{
+							"key": "companyId",
+							"value": "64c9b111c8f8a1594df3e6ff"
+						}
+					]
+				}
+			}
+		},
+		{
+			"name": "Get Account By ID",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:7000/api/accounts/64c9a555b9f8c2451dc3e6aa",
+					"protocol": "http",
+					"host": ["localhost"],
+					"port": "7000",
+					"path": ["api", "accounts", "64c9a555b9f8c2451dc3e6aa"]
+				}
+			}
+		},
+		{
+			"name": "Update Account",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:7000/api/accounts/64c9a555b9f8c2451dc3e6aa",
+					"protocol": "http",
+					"host": ["localhost"],
+					"port": "7000",
+					"path": ["api", "accounts", "64c9a555b9f8c2451dc3e6aa"]
+				},
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"Updated Business Account\",\n    \"description\": \"Updated description\",\n    \"code\": \"MB002\",\n    \"account_type_id\": \"64c9a555b9f8c2451dc3e6bb\",\n    \"bankName\": \"Updated Bank\",\n    \"branch\": \"New York\",\n    \"accountTitle\": \"Updated Operations\",\n    \"accountNo\": \"987654321\",\n    \"CompanyId\": \"64c9b111c8f8a1594df3e6ff\"\n}"
+				}
+			}
+		},
+		{
+			"name": "Delete Account",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:7000/api/accounts/64c9a555b9f8c2451dc3e6aa",
+					"protocol": "http",
+					"host": ["localhost"],
+					"port": "7000",
+					"path": ["api", "accounts", "64c9a555b9f8c2451dc3e6aa"]
+				}
+			}
+		}
+	]
+}

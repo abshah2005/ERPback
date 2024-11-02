@@ -1,0 +1,98 @@
+{
+	"info": {
+		"name": "Unit Management API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Create Unit",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:7000/api/units/createUnit",
+					"protocol": "http",
+					"host": ["localhost"],
+					"port": "7000",
+					"path": ["api", "units", "createUnit"]
+				},
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"Unit Name\",\n    \"symbol\": \"U\",\n    \"Shortname\": \"UN\"\n}"
+				}
+			}
+		},
+		{
+			"name": "Get All Units",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:7000/api/units/getUnits",
+					"protocol": "http",
+					"host": ["localhost"],
+					"port": "7000",
+					"path": ["api", "units", "getUnits"]
+				}
+			}
+		},
+		{
+			"name": "Get Unit By ID",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:7000/api/units/getUnit/64d9b555c9e8b2451df3e7aa",
+					"protocol": "http",
+					"host": ["localhost"],
+					"port": "7000",
+					"path": ["api", "units", "getUnit", "64d9b555c9e8b2451df3e7aa"]
+				}
+			}
+		},
+		{
+			"name": "Update Unit",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:7000/api/units/updateUnit/64d9b555c9e8b2451df3e7aa",
+					"protocol": "http",
+					"host": ["localhost"],
+					"port": "7000",
+					"path": ["api", "units", "updateUnit", "64d9b555c9e8b2451df3e7aa"]
+				},
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"Updated Unit Name\",\n    \"symbol\": \"U\",\n    \"Shortname\": \"UN\"\n}"
+				}
+			}
+		},
+		{
+			"name": "Delete Unit",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:7000/api/units/deleteUnit/64d9b555c9e8b2451df3e7aa",
+					"protocol": "http",
+					"host": ["localhost"],
+					"port": "7000",
+					"path": ["api", "units", "deleteUnit", "64d9b555c9e8b2451df3e7aa"]
+				}
+			}
+		}
+	]
+}

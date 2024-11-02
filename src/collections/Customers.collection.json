@@ -1,0 +1,98 @@
+{
+	"info": {
+		"name": "Customer Management API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Create Customer",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:7000/api/customers/createCustomer",
+					"protocol": "http",
+					"host": ["localhost"],
+					"port": "7000",
+					"path": ["api", "customers", "createCustomer"]
+				},
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"John Doe\",\n    \"short_name\": \"JD\",\n    \"display_name\": \"John\",\n    \"primary_email\": \"john.doe@example.com\",\n    \"phone_number\": \"1234567890\",\n    \"category_id\": \"64d9b555c9e8b2451df3e7aa\",\n    \"companyId\": \"64d9b666c8f8a2564df4e8bb\"\n}"
+				}
+			}
+		},
+		{
+			"name": "Get Customers By Company",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:7000/api/customers/getcompanyCustomers/64d9b666c8f8a2564df4e8bb",
+					"protocol": "http",
+					"host": ["localhost"],
+					"port": "7000",
+					"path": ["api", "customers", "getcompanyCustomers", "64d9b666c8f8a2564df4e8bb"]
+				}
+			}
+		},
+		{
+			"name": "Get Customer By ID",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:7000/api/customers/getCustomer/64d9b555c9e8b2451df3e7aa",
+					"protocol": "http",
+					"host": ["localhost"],
+					"port": "7000",
+					"path": ["api", "customers", "getCustomer", "64d9b555c9e8b2451df3e7aa"]
+				}
+			}
+		},
+		{
+			"name": "Update Customer",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:7000/api/customers/updateCustomer/64d9b555c9e8b2451df3e7aa",
+					"protocol": "http",
+					"host": ["localhost"],
+					"port": "7000",
+					"path": ["api", "customers", "updateCustomer", "64d9b555c9e8b2451df3e7aa"]
+				},
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"John Updated\",\n    \"primary_email\": \"updated.john@example.com\"\n}"
+				}
+			}
+		},
+		{
+			"name": "Delete Customer",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:7000/api/customers/deleteCustomer/64d9b555c9e8b2451df3e7aa",
+					"protocol": "http",
+					"host": ["localhost"],
+					"port": "7000",
+					"path": ["api", "customers", "deleteCustomer", "64d9b555c9e8b2451df3e7aa"]
+				}
+			}
+		}
+	]
+}

@@ -1,0 +1,100 @@
+{
+    "info": {
+      "name": "Category API Collection",
+      "description": "Collection to test Category CRUD operations",
+      "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+    },
+    "item": [
+      {
+        "name": "Create Category",
+        "request": {
+          "method": "POST",
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": {
+            "mode": "raw",
+            "raw": "{\n  \"name\": \"Sample Category\",\n  \"CompanyId\": \"<company_id>\",\n  \"description\": \"Sample description\",\n  \"type\": \"Product\"\n}"
+          },
+          "url": {
+            "raw": "http://localhost:7000/api/Categories/createCategory",
+            "protocol": "http",
+            "host": ["localhost"],
+            "port": "7000",
+            "path": ["api", "Categories", "createCategory"]
+          }
+        },
+        "response": []
+      },
+      {
+        "name": "Get Categories by Company",
+        "request": {
+          "method": "GET",
+          "url": {
+            "raw": "http://localhost:7000/api/Categories/getCategorybyCompany/:companyId",
+            "protocol": "http",
+            "host": ["localhost"],
+            "port": "7000",
+            "path": ["api", "Categories", "getCategorybyCompany", "<companyId>"]
+          }
+        },
+        "response": []
+      },
+      {
+        "name": "Get Category by ID",
+        "request": {
+          "method": "GET",
+          "url": {
+            "raw": "http://localhost:7000/api/Categories/getCategory/:categoryId",
+            "protocol": "http",
+            "host": ["localhost"],
+            "port": "7000",
+            "path": ["api", "Categories", "getCategory", "<categoryId>"]
+          }
+        },
+        "response": []
+      },
+      {
+        "name": "Update Category",
+        "request": {
+          "method": "PUT",
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": {
+            "mode": "raw",
+            "raw": "{\n  \"name\": \"Updated Category Name\",\n  \"description\": \"Updated description\"\n}"
+          },
+          "url": {
+            "raw": "http://localhost:7000/api/Categories/updateCategory/:categoryId",
+            "protocol": "http",
+            "host": ["localhost"],
+            "port": "7000",
+            "path": ["api", "Categories", "updateCategory", "<categoryId>"]
+          }
+        },
+        "response": []
+      },
+      {
+        "name": "Delete Category",
+        "request": {
+          "method": "DELETE",
+          "url": {
+            "raw": "http://localhost:7000/api/Categories/deleteCategory/:categoryId",
+            "protocol": "http",
+            "host": ["localhost"],
+            "port": "7000",
+            "path": ["api", "Categories", "deleteCategory", "<categoryId>"]
+          }
+        },
+        "response": []
+      }
+    ]
+  }
+  

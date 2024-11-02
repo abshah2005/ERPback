@@ -1,0 +1,98 @@
+{
+	"info": {
+		"name": "Vendor Management API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Create Vendor",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:7000/api/vendors/createVendor",
+					"protocol": "http",
+					"host": ["localhost"],
+					"port": "7000",
+					"path": ["api", "vendors", "createVendor"]
+				},
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"Vendor Name\",\n    \"display_name\": \"Vendor Display Name\",\n    \"primary_email\": \"vendor@example.com\",\n    \"phone_number\": \"1234567890\",\n    \"category_id\": \"64d9b555c9e8b2451df3e7aa\",\n    \"companyId\": \"64d9b666c8f8a2564df4e8bb\",\n    \"address\": \"123 Vendor St\",\n    \"city\": \"Vendor City\",\n    \"country\": \"Vendor Country\"\n}"
+				}
+			}
+		},
+		{
+			"name": "Get Vendors By Company",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:7000/api/vendors/getVendorbycompany/64d9b666c8f8a2564df4e8bb",
+					"protocol": "http",
+					"host": ["localhost"],
+					"port": "7000",
+					"path": ["api", "vendors", "getVendorbycompany", "64d9b666c8f8a2564df4e8bb"]
+				}
+			}
+		},
+		{
+			"name": "Get Vendor By ID",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:7000/api/vendors/getVendor/64d9b555c9e8b2451df3e7aa",
+					"protocol": "http",
+					"host": ["localhost"],
+					"port": "7000",
+					"path": ["api", "vendors", "getVendor", "64d9b555c9e8b2451df3e7aa"]
+				}
+			}
+		},
+		{
+			"name": "Update Vendor",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:7000/api/vendors/updateVendor/64d9b555c9e8b2451df3e7aa",
+					"protocol": "http",
+					"host": ["localhost"],
+					"port": "7000",
+					"path": ["api", "vendors", "updateVendor", "64d9b555c9e8b2451df3e7aa"]
+				},
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"Updated Vendor Name\",\n    \"primary_email\": \"updated.vendor@example.com\"\n}"
+				}
+			}
+		},
+		{
+			"name": "Delete Vendor",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:7000/api/vendors/deleteVendor/64d9b555c9e8b2451df3e7aa",
+					"protocol": "http",
+					"host": ["localhost"],
+					"port": "7000",
+					"path": ["api", "vendors", "deleteVendor", "64d9b555c9e8b2451df3e7aa"]
+				}
+			}
+		}
+	]
+}
