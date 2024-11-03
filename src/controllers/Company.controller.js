@@ -3,6 +3,7 @@ import { CompanySettings } from "../models/CompanySetting.model.js";
 import { AdminUser } from "../models/user.js";
 import { Apierror } from "../utils/Apierror.js"
 import { asynchandler } from "../utils/Asynchandler.js";
+import {uploadonCloudinary} from "../utils/Fileupload.js"
 
 export const createCompany = asynchandler(async (req, res) => {
   const {
@@ -17,23 +18,28 @@ export const createCompany = asynchandler(async (req, res) => {
     phone,
     fax,
     companyNo,
-    logo,
-    signature,
   } = req.body;
+  const{logo,signature}=req.files;
 
-  if (!name  || !type || !country || !city || !state || !zip || !email || !contactPerson || !phone || !fax || !companyNo || !logo || !signature) {
+  if (!name  || !type || !country || !city || !state || !zip || !email || !contactPerson || !phone || !fax || !companyNo ) {
     throw new Apierror(400, "All fields are required.");
   }
-  // const admin=await AdminUser.findById(adminId);
-  // if(!admin){
-  //   throw new Apierror(404, "Admin not found");
-  // }
   function getCurrentMonth() {
     const date = new Date();
-    const options = { month: 'long' }; // 'long' for full month name
+    const options = { month: 'long' }; 
     return date.toLocaleString('default', options);
 }
    const month=getCurrentMonth();
+
+   const logoPic=await uploadonCloudinary(logo[0].path);
+   if(!logoPic){
+    throw new Apierror(400,"Logo not uploaded Try again");
+   }
+   const signaturePic=await uploadonCloudinary(signature[0].path);
+   if(!signaturePic){
+    throw new Apierror(400,"Logo not uploaded Try again");
+   }
+
 
   const newCompany = await Company.create({
     name,
@@ -48,8 +54,8 @@ export const createCompany = asynchandler(async (req, res) => {
     phone,
     fax,
     companyNo,
-    logo,
-    signature,
+    logo:logoPic.url?logoPic.url:null,
+    signature:signaturePic.url?signaturePic.url:null,
   });
 
   const defaultSettings = {
@@ -119,8 +125,23 @@ export const updateCompany = asynchandler(async (req, res) => {
   if (req.body.fax) updateFields.fax = req.body.fax;
   if (req.body.companyNo) updateFields.companyNo = req.body.companyNo;
   if (req.body.logo) updateFields.logo = req.body.logo;
-  if (req.body.signature) updateFields.signature = req.body.signature;
+  if(req.files.logo && req.files.logo.length > 0){
+  const logoPic=await uploadonCloudinary(req.files.logo[0].path);
+   if(!logoPic){
+    throw new Apierror(400,"Logo not uploaded Try again");
+   }
+   const url=logoPic.url?logoPic.url:null;
+   updateFields.logo=url;
+   } 
 
+   if(req.files.signature && req.files.signature.length > 0){
+    const signaturePic=await uploadonCloudinary(req.files.signature[0].path);
+     if(!signaturePic){
+      throw new Apierror(400,"Signature not uploaded Try again");
+     }
+     const url=signaturePic.url?signaturePic.url:null;
+     updateFields.signature=url;
+     } 
   const updatedCompany = await Company.findByIdAndUpdate(companyId, updateFields, { new: true, runValidators: true });
 
   return res.status(200).json({ message: "Company updated successfully", company: updatedCompany });

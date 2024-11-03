@@ -1,0 +1,253 @@
+{
+    "info": {
+        "_postman_id": "08c3ffa8-636d-4046-a1e5-0d4d88379b5c",
+        "name": "CompanyCollectionFinal",
+        "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+        "description": ""
+    },
+    "item": [
+        {
+            "name": "CreateCompany",
+            "request": {
+                "method": "POST",
+                "url": {
+                    "raw": "http://localhost:7000/api/company/createCompany",
+                    "path": [
+                        "api",
+                        "company",
+                        "createCompany"
+                    ],
+                    "protocol": "http",
+                    "host": [
+                        "localhost"
+                    ],
+                    "port": "7000"
+                },
+                "body": {
+                    "mode": "formdata",
+                    "formdata": [
+                        {
+                            "key": "name",
+                            "value": "Alwa Pharma",
+                            "type": "default"
+                        },
+                        {
+                            "key": "type",
+                            "value": "B2B",
+                            "type": "default"
+                        },
+                        {
+                            "key": "country",
+                            "value": "Pak",
+                            "type": "default"
+                        },
+                        {
+                            "key": "city",
+                            "value": "Lhr",
+                            "type": "default"
+                        },
+                        {
+                            "key": "state",
+                            "value": "Lhr",
+                            "type": "default"
+                        },
+                        {
+                            "key": "zip",
+                            "value": "4200",
+                            "type": "default"
+                        },
+                        {
+                            "key": "email",
+                            "value": "abdullah03350904415@gmail.com",
+                            "type": "default"
+                        },
+                        {
+                            "key": "contactPerson",
+                            "value": "033938741",
+                            "type": "default"
+                        },
+                        {
+                            "key": "phone",
+                            "value": "033938741",
+                            "type": "default"
+                        },
+                        {
+                            "key": "fax",
+                            "value": "033938741",
+                            "type": "default"
+                        },
+                        {
+                            "key": "companyNo",
+                            "value": "2435",
+                            "type": "default"
+                        },
+                        {
+                            "key": "logo",
+                            "src": "c:\\Users\\Administrator\\Desktop\\List.png",
+                            "type": "file"
+                        },
+                        {
+                            "key": "signature",
+                            "src": "c:\\Users\\Administrator\\Desktop\\mul_logo.jpg",
+                            "type": "file"
+                        }
+                    ]
+                },
+                "auth": {
+                    "type": "bearer",
+                    "bearer": [
+                        {
+                            "key": "token",
+                            "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NzI3MDRkYzRkZDdhZGZmZmZkNGZkOWQiLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE3MzA2NTMyNDIsImV4cCI6MTczMDY1Njg0Mn0.OZJSLZ0NSzE1S1_P7NtaKfaFBCmMQaflBFWScNg2Aw0",
+                            "type": "string"
+                        }
+                    ]
+                }
+            }
+        },
+        {
+            "name": "UpdateCompany",
+            "request": {
+                "method": "PUT",
+                "url": {
+                    "raw": "http://localhost:7000/api/company/updateCompany/6727ad8772d68db040464297",
+                    "path": [
+                        "api",
+                        "company",
+                        "updateCompany",
+                        "6727ad8772d68db040464297"
+                    ],
+                    "protocol": "http",
+                    "host": [
+                        "localhost"
+                    ],
+                    "port": "7000"
+                },
+                "body": {
+                    "mode": "formdata",
+                    "formdata": [
+                        {
+                            "key": "name",
+                            "value": "PAkistan Mills",
+                            "type": "default"
+                        },
+                        {
+                            "key": "state",
+                            "value": "Pakistan",
+                            "type": "default"
+                        },
+                        {
+                            "key": "country",
+                            "value": "Pakistan",
+                            "type": "default"
+                        },
+                        {
+                            "key": "logo",
+                            "src": "c:\\Users\\Administrator\\Desktop\\mul_logo.jpg",
+                            "type": "file"
+                        }
+                    ]
+                },
+                "auth": {
+                    "type": "bearer",
+                    "bearer": [
+                        {
+                            "key": "token",
+                            "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NzI3MDRkYzRkZDdhZGZmZmZkNGZkOWQiLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE3MzA2NTMyNDIsImV4cCI6MTczMDY1Njg0Mn0.OZJSLZ0NSzE1S1_P7NtaKfaFBCmMQaflBFWScNg2Aw0",
+                            "type": "string"
+                        }
+                    ]
+                }
+            }
+        },
+        {
+            "name": "DeleteCompany",
+            "request": {
+                "method": "DELETE",
+                "url": {
+                    "raw": "http://localhost:7000/api/company/deleteCompany/6727ad8772d68db040464297",
+                    "path": [
+                        "api",
+                        "company",
+                        "deleteCompany",
+                        "6727ad8772d68db040464297"
+                    ],
+                    "protocol": "http",
+                    "host": [
+                        "localhost"
+                    ],
+                    "port": "7000"
+                },
+                "auth": {
+                    "type": "bearer",
+                    "bearer": [
+                        {
+                            "key": "token",
+                            "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NzI3MDRkYzRkZDdhZGZmZmZkNGZkOWQiLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE3MzA2NTMyNDIsImV4cCI6MTczMDY1Njg0Mn0.OZJSLZ0NSzE1S1_P7NtaKfaFBCmMQaflBFWScNg2Aw0",
+                            "type": "string"
+                        }
+                    ]
+                }
+            }
+        },
+        {
+            "name": "Get All Companies",
+            "request": {
+                "method": "GET",
+                "url": {
+                    "raw": "http://localhost:7000/api/company/getAllCompanies",
+                    "path": [
+                        "api",
+                        "company",
+                        "getAllCompanies"
+                    ],
+                    "protocol": "http",
+                    "host": [
+                        "localhost"
+                    ],
+                    "port": "7000"
+                },
+                "auth": {
+                    "type": "bearer",
+                    "bearer": [
+                        {
+                            "key": "token",
+                            "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NzI3MDRkYzRkZDdhZGZmZmZkNGZkOWQiLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE3MzA2NTMyNDIsImV4cCI6MTczMDY1Njg0Mn0.OZJSLZ0NSzE1S1_P7NtaKfaFBCmMQaflBFWScNg2Aw0",
+                            "type": "string"
+                        }
+                    ]
+                }
+            }
+        },
+        {
+            "name": "Get Company by id",
+            "request": {
+                "method": "GET",
+                "url": {
+                    "raw": "http://localhost:7000/api/company/getCompanyById/6727ad8772d68db040464297",
+                    "path": [
+                        "api",
+                        "company",
+                        "getCompanyById",
+                        "6727ad8772d68db040464297"
+                    ],
+                    "protocol": "http",
+                    "host": [
+                        "localhost"
+                    ],
+                    "port": "7000"
+                },
+                "auth": {
+                    "type": "bearer",
+                    "bearer": [
+                        {
+                            "key": "token",
+                            "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NzI3MDRkYzRkZDdhZGZmZmZkNGZkOWQiLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE3MzA2NTMyNDIsImV4cCI6MTczMDY1Njg0Mn0.OZJSLZ0NSzE1S1_P7NtaKfaFBCmMQaflBFWScNg2Aw0",
+                            "type": "string"
+                        }
+                    ]
+                }
+            }
+        }
+    ]
+}

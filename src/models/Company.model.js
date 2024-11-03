@@ -17,7 +17,7 @@ const CompanySchema = new Schema(
     phone: { type: String, required: true },
     fax: { type: String, required: true },
     companyNo: { type: String, required: true },
-    logo: { type: String, required: true },
+    logo: { type: String },
     signature: { type: String, required: true },
   },
   { timestamps: true }

@@ -1,0 +1,282 @@
+{
+    "info": {
+        "_postman_id": "545f94f0-a571-46db-8591-e1349e1c97c2",
+        "name": "UserCollectionfinal",
+        "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+        "description": ""
+    },
+    "item": [
+        {
+            "name": "Admin Signup",
+            "request": {
+                "method": "POST",
+                "url": {
+                    "raw": "http://localhost:7000/api/auth/signup",
+                    "path": [
+                        "api",
+                        "auth",
+                        "signup"
+                    ],
+                    "protocol": "http",
+                    "host": [
+                        "localhost"
+                    ],
+                    "port": "7000"
+                },
+                "body": {
+                    "mode": "formdata",
+                    "formdata": [
+                        {
+                            "key": "fullname",
+                            "value": "shamaim",
+                            "type": "default"
+                        },
+                        {
+                            "key": "email",
+                            "value": "shamaim@gmail.com",
+                            "type": "default"
+                        },
+                        {
+                            "key": "password",
+                            "value": "shamaim",
+                            "type": "default"
+                        },
+                        {
+                            "key": "displayname",
+                            "value": "shamaim",
+                            "type": "default"
+                        },
+                        {
+                            "key": "phonenumber",
+                            "value": "03350904415",
+                            "type": "default"
+                        },
+                        {
+                            "key": "packagePlan",
+                            "value": "premium",
+                            "type": "default"
+                        },
+                        {
+                            "key": "expiryDate",
+                            "value": "2025-1-31",
+                            "type": "default"
+                        },
+                        {
+                            "key": "gracePeriodDays",
+                            "value": "2024-12-31",
+                            "type": "default"
+                        },
+                        {
+                            "key": "profilePic",
+                            "src": "c:\\Users\\Administrator\\Desktop\\List.png",
+                            "type": "file"
+                        }
+                    ]
+                }
+            }
+        },
+        {
+            "name": "Admin Signin",
+            "request": {
+                "method": "POST",
+                "url": {
+                    "raw": "http://localhost:7000/api/auth/login",
+                    "path": [
+                        "api",
+                        "auth",
+                        "login"
+                    ],
+                    "protocol": "http",
+                    "host": [
+                        "localhost"
+                    ],
+                    "port": "7000"
+                },
+                "header": [
+                    {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                    }
+                ],
+                "body": {
+                    "mode": "raw",
+                    "options": {
+                        "raw": {
+                            "language": "json"
+                        }
+                    },
+                    "raw": "{\n  \"email\": \"shamaim@gmail.com\",\n  \"password\": \"newpassword\"\n}"
+                }
+            }
+        },
+        {
+            "name": "Create User",
+            "request": {
+                "method": "POST",
+                "body": {
+                    "mode": "formdata",
+                    "formdata": [
+                        {
+                            "key": "email",
+                            "value": "underuser1@gmail.com",
+                            "type": "default"
+                        },
+                        {
+                            "key": "password",
+                            "value": "underuser1",
+                            "type": "default"
+                        },
+                        {
+                            "key": "displayname",
+                            "value": "khalil",
+                            "type": "default"
+                        },
+                        {
+                            "key": "fullname",
+                            "value": "khalil",
+                            "type": "default"
+                        },
+                        {
+                            "key": "phonenumber",
+                            "value": "090078601",
+                            "type": "default"
+                        },
+                        {
+                            "key": "associatedRole",
+                            "value": "6726691ae47a04e192b4d798",
+                            "type": "default"
+                        }
+                    ]
+                },
+                "auth": {
+                    "type": "bearer",
+                    "bearer": [
+                        {
+                            "key": "token",
+                            "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NzI3MDRkYzRkZDdhZGZmZmZkNGZkOWQiLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE3MzA2MTIyNTMsImV4cCI6MTczMDYxNTg1M30.wZRnktYg5HJyoTA33Oo9N3x2Gj0rz8cd4U-BCBS7-KE",
+                            "type": "string"
+                        }
+                    ]
+                }
+            }
+        },
+        {
+            "name": "Reset Admin Password",
+            "request": {
+                "method": "POST",
+                "url": {
+                    "raw": "http://localhost:7000/api/auth/resetAdminPassword",
+                    "path": [
+                        "api",
+                        "auth",
+                        "resetAdminPassword"
+                    ],
+                    "protocol": "http",
+                    "host": [
+                        "localhost"
+                    ],
+                    "port": "7000"
+                },
+                "header": [
+                    {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                    }
+                ],
+                "body": {
+                    "mode": "raw",
+                    "options": {
+                        "raw": {
+                            "language": "json"
+                        }
+                    },
+                    "raw": "{\n  \"email\": \"shamaim@gmail.com\",\n  \"newPassword\": \"newpassword\"\n}"
+                },
+                "auth": {
+                    "type": "bearer",
+                    "bearer": [
+                        {
+                            "key": "token",
+                            "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NzI3MDRkYzRkZDdhZGZmZmZkNGZkOWQiLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE3MzA2MTIyNTMsImV4cCI6MTczMDYxNTg1M30.wZRnktYg5HJyoTA33Oo9N3x2Gj0rz8cd4U-BCBS7-KE",
+                            "type": "string"
+                        }
+                    ]
+                }
+            }
+        },
+        {
+            "name": "Update User Details",
+            "request": {
+                "method": "PATCH",
+                "url": {
+                    "raw": "http://localhost:7000/api/auth/updateuser",
+                    "path": [
+                        "api",
+                        "auth",
+                        "updateuser"
+                    ],
+                    "protocol": "http",
+                    "host": [
+                        "localhost"
+                    ],
+                    "port": "7000"
+                },
+                "body": {
+                    "mode": "formdata",
+                    "formdata": [
+                        {
+                            "key": "userId",
+                            "value": "12345",
+                            "type": "default"
+                        },
+                        {
+                            "key": "newPassword",
+                            "value": "newShamaimPassword",
+                            "type": "default"
+                        },
+                        {
+                            "key": "associatedRole",
+                            "value": "roleId123",
+                            "type": "default"
+                        },
+                        {
+                            "key": "profilePic",
+                            "src": "c:\\Users\\Administrator\\Desktop\\UpdatedList.png",
+                            "type": "file"
+                        }
+                    ]
+                }
+            }
+        },
+        {
+            "name": "Delete User",
+            "request": {
+                "method": "DELETE",
+                "url": {
+                    "raw": "http://localhost:7000/api/auth/deleteUser/67270e0b06e0aa6b19a46f9f",
+                    "path": [
+                        "api",
+                        "auth",
+                        "deleteUser",
+                        "67270e0b06e0aa6b19a46f9f"
+                    ],
+                    "protocol": "http",
+                    "host": [
+                        "localhost"
+                    ],
+                    "port": "7000"
+                },
+                "auth": {
+                    "type": "bearer",
+                    "bearer": [
+                        {
+                            "key": "token",
+                            "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NzI3MDRkYzRkZDdhZGZmZmZkNGZkOWQiLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE3MzA2MTM1MDAsImV4cCI6MTczMDYxNzEwMH0.HA5fNLoRwKLieiig8vYb_tkDqHCWi92muvC3wrjMN50",
+                            "type": "string"
+                        }
+                    ]
+                }
+            }
+        }
+    ]
+}
