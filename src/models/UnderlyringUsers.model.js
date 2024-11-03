@@ -7,7 +7,7 @@ const UnderlyingUserSchema = new Schema(
     password: { type: String, required: true },
     displayname: { type: String, required: true },
     phonenumber: { type: String, required: true },
-    profilePic: { type: String, required: true },
+    profilePic: { type: String },
     associatedRole: { type: mongoose.Schema.Types.ObjectId, required: true, ref: "Roles"},
     adminId: { type: mongoose.Schema.Types.ObjectId, required: true, ref: "AdminUser" }, 
     lastLoggedIn: { type: Date },

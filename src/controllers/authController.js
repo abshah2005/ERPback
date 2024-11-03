@@ -4,6 +4,7 @@ import { Role } from "../models/Roles.model.js";
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
 import { Apierror } from "../utils/Apierror.js";
+import { uploadonCloudinary } from "../utils/Fileupload.js";
 
 const isEmpty = (str) => !str || str.trim() === '';
 
@@ -17,14 +18,14 @@ const createSession = (user) => {
   user.sessionToken = sessionToken;
   user.sessionTokenExpiry = Date.now() + 3600000; 
   user.lastLoggedIn = Date.now();
-
   user.save();
   
   return sessionToken;
 };
 
 export const signupAdmin = async (req, res) => {
-  const { fullname, email, password, displayname, phonenumber, profilePic, packagePlan, expiryDate, gracePeriodDays } = req.body;
+  const { fullname, email, password, displayname, phonenumber, packagePlan, expiryDate, gracePeriodDays } = req.body;
+  const { profilePic } = req.file || {};
 
   if ([fullname, email, password, displayname, phonenumber].some(isEmpty)) {
     return res.status(400).json({ message: "All fields are required and cannot be empty" });
@@ -34,6 +35,11 @@ export const signupAdmin = async (req, res) => {
     const existingAdmin = await AdminUser.findOne({ email });
     if (existingAdmin) return res.status(400).json({ message: "Admin user already exists" });
 
+    const proPic = profilePic ? await uploadonCloudinary(profilePic.path) : null;
+    if (profilePic && !proPic) {
+      return res.status(400).json({ message: "Failed to upload profile picture" });
+    }
+
     const hashedPassword = await bcrypt.hash(password, 10);
     const newAdmin = new AdminUser({ 
       fullname, 
@@ -41,7 +47,7 @@ export const signupAdmin = async (req, res) => {
       password: hashedPassword, 
       displayname, 
       phonenumber, 
-      profilePic, 
+      profilePic: proPic ? proPic.url : null, 
       packagePlan, 
       expiryDate, 
       gracePeriodDays 
@@ -54,7 +60,8 @@ export const signupAdmin = async (req, res) => {
 };
 
 export const createUnderlyingUser = async (req, res) => {
-  const { email, password, fullname, displayname, phonenumber, profilePic, associatedRole } = req.body;
+  const { email, password, fullname, displayname, phonenumber, associatedRole } = req.body;
+  const { profilePic } = req.file || {};
 
   if ([email, password, fullname, displayname, phonenumber].some(isEmpty)) {
     return res.status(400).json({ message: "All fields are required and cannot be empty" });
@@ -64,6 +71,11 @@ export const createUnderlyingUser = async (req, res) => {
     const roleExists = await Role.findById(associatedRole);
     if (!roleExists) {
       return res.status(400).json({ message: "Associated role does not exist" });
+    }
+
+    const proPic = profilePic ? await uploadonCloudinary(profilePic.path) : null;
+    if (profilePic && !proPic) {
+      return res.status(400).json({ message: "Failed to upload profile picture" });
     }
 
     const existingUser = await UnderlyingUser.findOne({ email });
@@ -76,7 +88,7 @@ export const createUnderlyingUser = async (req, res) => {
       fullname, 
       displayname, 
       phonenumber, 
-      profilePic, 
+      profilePic: proPic ? proPic.url : null, 
       associatedRole,
       adminId: req.user._id 
     });
@@ -160,6 +172,7 @@ export const resetAdminPassword = async (req, res) => {
 
 export const updateUnderlyingUserDetails = async (req, res) => {
   const { userId, newPassword, associatedRole } = req.body;
+  const { profilePic } = req.file || {};
 
   if (isEmpty(userId)) {
     return res.status(400).json({ message: "User ID is required" });
@@ -169,7 +182,7 @@ export const updateUnderlyingUserDetails = async (req, res) => {
     const underlyingUser = await UnderlyingUser.findById(userId);
     if (!underlyingUser) return res.status(404).json({ message: "User not found" });
 
-    if (associatedRole && isEmpty(associatedRole)) {
+    if (associatedRole) {
       const roleExists = await Role.findById(associatedRole);
       if (!roleExists) {
         return res.status(400).json({ message: "Associated role does not exist" });
@@ -177,13 +190,21 @@ export const updateUnderlyingUserDetails = async (req, res) => {
       underlyingUser.associatedRole = associatedRole;
     }
 
-    if (newPassword && !isEmpty(newPassword)) {
+    if (newPassword) {
       const hashedPassword = await bcrypt.hash(newPassword, 10);
       underlyingUser.password = hashedPassword;
     }
 
-    await underlyingUser.save();
+    if (profilePic) {  
+      const pfp = await uploadonCloudinary(profilePic.path);  
+      if (pfp) {  
+        underlyingUser.profilePic = pfp.url;  
+      } else {
+        return res.status(400).json({ message: "Failed to upload profile picture" });
+      }
+    }
 
+    await underlyingUser.save();
     return res.status(200).json({ message: "User details updated successfully" });
   } catch (error) {
     return res.status(500).json({ message: error.message });

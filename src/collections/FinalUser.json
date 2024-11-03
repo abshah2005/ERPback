@@ -1,0 +1,220 @@
+{
+    "client": "Thunder Client",
+    "collectionName": "UserCollectionfinal",
+    "dateExported": "2024-11-03T05:46:35.526Z",
+    "version": "1.1",
+    "folders": [],
+    "requests": [
+        {
+            "_id": "31169f33-d714-4813-b946-5eb30c85e2f5",
+            "colId": "d6e00ceb-2c25-43d4-aa18-ff7b5c1c97b4",
+            "containerId": "",
+            "name": "Admin Signup",
+            "url": "http://localhost:7000/api/auth/signup",
+            "method": "POST",
+            "sortNum": 10000,
+            "created": "2024-11-03T05:36:46.774Z",
+            "modified": "2024-11-03T05:37:04.388Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "formdata",
+                "raw": "",
+                "form": [
+                    {
+                        "name": "fullname",
+                        "value": "shamaim"
+                    },
+                    {
+                        "name": "email",
+                        "value": "shamaim1@gmail.com"
+                    },
+                    {
+                        "name": "password",
+                        "value": "shamaim"
+                    },
+                    {
+                        "name": "displayname",
+                        "value": "shamaim"
+                    },
+                    {
+                        "name": "phonenumber",
+                        "value": "03350904415"
+                    },
+                    {
+                        "name": "packagePlan",
+                        "value": "premium"
+                    },
+                    {
+                        "name": "expiryDate",
+                        "value": "2025-1-31"
+                    },
+                    {
+                        "name": "gracePeriodDays",
+                        "value": "2024-12-31"
+                    }
+                ],
+                "files": [
+                    {
+                        "name": "profilePic",
+                        "value": "c:\\Users\\Administrator\\Desktop\\List.png"
+                    }
+                ]
+            },
+            "tests": []
+        },
+        {
+            "_id": "a33ae0b4-b090-45d2-b1ea-923d65d3cc0d",
+            "colId": "d6e00ceb-2c25-43d4-aa18-ff7b5c1c97b4",
+            "containerId": "",
+            "name": "Admin Signin",
+            "url": "http://localhost:7000/api/auth/login",
+            "method": "POST",
+            "sortNum": 20000,
+            "created": "2024-11-03T05:36:46.776Z",
+            "modified": "2024-11-03T05:37:33.832Z",
+            "headers": [
+                {
+                    "name": "Content-Type",
+                    "value": "application/json"
+                }
+            ],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"email\": \"shamaim@gmail.com\",\n  \"password\": \"shamaim\"\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "e4fd8126-3483-48a8-986d-b9d522ae1aca",
+            "colId": "d6e00ceb-2c25-43d4-aa18-ff7b5c1c97b4",
+            "containerId": "",
+            "name": "Reset Admin Password",
+            "url": "http://localhost:7000/api/auth/resetAdminPassword",
+            "method": "POST",
+            "sortNum": 30000,
+            "created": "2024-11-03T05:36:46.777Z",
+            "modified": "2024-11-03T05:37:55.742Z",
+            "headers": [
+                {
+                    "name": "Content-Type",
+                    "value": "application/json"
+                }
+            ],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"email\": \"shamaim@gmail.com\",\n  \"newPassword\": \"newpassword\"\n}",
+                "form": []
+            },
+            "auth": {
+                "type": "bearer",
+                "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NzI3MDRkYzRkZDdhZGZmZmZkNGZkOWQiLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE3MzA2MTIyNTMsImV4cCI6MTczMDYxNTg1M30.wZRnktYg5HJyoTA33Oo9N3x2Gj0rz8cd4U-BCBS7-KE"
+            },
+            "tests": []
+        },
+        {
+            "_id": "1c3c21ed-4bc2-4ab2-84de-969cdf7ff5da",
+            "colId": "d6e00ceb-2c25-43d4-aa18-ff7b5c1c97b4",
+            "containerId": "",
+            "name": "Update User Details",
+            "url": "http://localhost:7000/api/auth/updateuser",
+            "method": "PATCH",
+            "sortNum": 40000,
+            "created": "2024-11-03T05:36:46.778Z",
+            "modified": "2024-11-03T05:36:46.778Z",
+            "headers": [],
+            "body": {
+                "form": [
+                    {
+                        "name": "userId",
+                        "value": "12345"
+                    },
+                    {
+                        "name": "newPassword",
+                        "value": "newShamaimPassword"
+                    },
+                    {
+                        "name": "associatedRole",
+                        "value": "roleId123"
+                    }
+                ],
+                "files": [
+                    {
+                        "name": "profilePic",
+                        "value": "c:\\Users\\Administrator\\Desktop\\UpdatedList.png"
+                    }
+                ],
+                "type": "formdata"
+            }
+        },
+        {
+            "_id": "5ccaf607-1e3b-4055-85b7-c9bf7a010ce0",
+            "colId": "d6e00ceb-2c25-43d4-aa18-ff7b5c1c97b4",
+            "containerId": "",
+            "name": "Delete User",
+            "url": "http://localhost:7000/api/auth/deleteUnderlyingUser/12345",
+            "method": "DELETE",
+            "sortNum": 50000,
+            "created": "2024-11-03T05:36:46.779Z",
+            "modified": "2024-11-03T05:36:46.779Z",
+            "headers": []
+        },
+        {
+            "_id": "d343854c-74b7-4284-9a41-fc0acd8783a3",
+            "colId": "d6e00ceb-2c25-43d4-aa18-ff7b5c1c97b4",
+            "containerId": "",
+            "name": "Create User",
+            "url": "http://localhost:7000/api/auth/createuser",
+            "method": "POST",
+            "sortNum": 70000,
+            "created": "2024-11-03T05:38:58.296Z",
+            "modified": "2024-11-03T05:43:02.947Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "formdata",
+                "raw": "",
+                "form": [
+                    {
+                        "name": "email",
+                        "value": "underuser1@gmail.com"
+                    },
+                    {
+                        "name": "password",
+                        "value": "underuser1"
+                    },
+                    {
+                        "name": "displayname",
+                        "value": "khalil"
+                    },
+                    {
+                        "name": "fullname",
+                        "value": "khalil "
+                    },
+                    {
+                        "name": "phonenumber",
+                        "value": "090078601"
+                    },
+                    {
+                        "name": "associatedRole",
+                        "value": "6726691ae47a04e192b4d798"
+                    }
+                ],
+                "files": [
+                    {
+                        "name": "profilePic",
+                        "value": "c:\\Users\\Administrator\\Desktop\\List.png"
+                    }
+                ]
+            },
+            "auth": {
+                "type": "bearer",
+                "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NzI3MDRkYzRkZDdhZGZmZmZkNGZkOWQiLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE3MzA2MTIyNTMsImV4cCI6MTczMDYxNTg1M30.wZRnktYg5HJyoTA33Oo9N3x2Gj0rz8cd4U-BCBS7-KE"
+            },
+            "tests": []
+        }
+    ]
+}

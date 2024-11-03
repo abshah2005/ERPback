@@ -7,7 +7,7 @@ const AdminUserSchema = new Schema(
     password: { type: String, required: true },
     displayname: { type: String, required: true },
     phonenumber: { type: String, required: true },
-    profilePic: { type: String, required: true },
+    profilePic: { type: String  },
     packagePlan: { type: String, required: true },
     expiryDate: { type: Date, required: true },
     gracePeriodDays: { type: String, required: true },
